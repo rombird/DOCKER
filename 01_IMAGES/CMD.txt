@@ -1,14 +1,17 @@
 # 이미지 생성
-docker build -t [이미지명:태그명] 
+docker build -t [이미지명:태그명] [도커파일위치]
+
+# 이미지 확인
+docker images
 
 # 이미지 삭제
 docker rmi [id or 이미지명]
 
 # 도커 이미지 내 진입
-docker run -it [id or 이미지명] sh
+docker run -it [id or 이미지명:태그명] sh
 
-# 임시 컨테이너 생성(종료시 삭제) + 포트 연결
-docker run -it --rm -p 3000:80 fn
+# 임시 컨테이너 생성(종료시 삭제) + 포트 연결 -> localhost:3000 들어가면 페이지 
+docker run -it --rm -p 3000:80 fn:1.1
 
 
 ## BN
@@ -19,4 +22,8 @@ docker run -it bn:1.1 sh
     # ls -l
     # java -jar app.jar -> springboot 실행
     # exit
-docker run -it --rm -p 8080:8080 bn:1.1 # Dockerfile에 있는 외부포트번호와 일치시켜주기
+docker run -it --rm -p 8080:8080 bn:1.1 # Dockerfile에 있는 외부포트번호와 일치시켜주기(BNdml application.properties의 포트번화와 일치)
+
+
+# docker 네트워크
+docker network create --driver bridge my-network
