@@ -9,7 +9,6 @@ RUN apt-get update && apt-get -y install \
     curl \
     unzip \
     gnupg \
-    software-properties-common \
     ca-certificates
 
 # Docker CLI 설치 (공식 스크립트 이용 - docker-ce 포함)
